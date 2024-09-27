@@ -3,6 +3,7 @@ import 'express-async-errors';
 import express from 'express';
 import { notFound } from './middleware/not-found.js';
 import { errorHandlerMiddleware } from './middleware/error-handler.js';
+import { connectDB } from './db/connect.js';
 
 const app = express();
 

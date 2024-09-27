@@ -3,5 +3,7 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  res.send('register login');
+  res.send('login user');
 };
+
+export { login, register };
