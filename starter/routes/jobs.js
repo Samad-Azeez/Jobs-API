@@ -7,7 +7,7 @@ import {
   deleteJob,
 } from '../controllers/jobs.js';
 
-const jobsRouter = express.Router();
+export const jobsRouter = express.Router();
 
 router.route('/').get(getAllJobs).post(createJob);
 
