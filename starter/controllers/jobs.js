@@ -1,5 +1,5 @@
 const getAllJobs = async (req, res) => {
-  res.status(200).send('get all jobs');
+  res.send('get all jobs');
 };
 
 const getJob = async (req, res) => {
