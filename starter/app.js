@@ -15,8 +15,8 @@ app.use(express.json()); // parse json bodies in requests
 // extra packages
 
 // routes
-app.get('/api/v1/auth', authRouter);
-app.get('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/jobs', jobsRouter);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
