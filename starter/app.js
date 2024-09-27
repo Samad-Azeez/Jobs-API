@@ -4,6 +4,8 @@ import express from 'express';
 import { notFound } from './middleware/not-found.js';
 import { errorHandlerMiddleware } from './middleware/error-handler.js';
 import { connectDB } from './db/connect.js';
+import jobsRouter from './routes/jobs.js';
+import authRouter from './routes/auth.js';
 
 const app = express();
 
