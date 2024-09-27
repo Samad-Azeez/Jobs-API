@@ -9,6 +9,6 @@ import {
 
 export const jobsRouter = express.Router();
 
-router.route('/').get(getAllJobs).post(createJob);
+jobsRouter.route('/').get(getAllJobs).post(createJob);
 
-router.route('/:id').get(getJob).patch(updateJob).delete(deleteJob);
+jobsRouter.route('/:id').get(getJob).patch(updateJob).delete(deleteJob);
