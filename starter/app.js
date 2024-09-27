@@ -4,8 +4,8 @@ import express from 'express';
 import { notFound } from './middleware/not-found.js';
 import { errorHandlerMiddleware } from './middleware/error-handler.js';
 import { connectDB } from './db/connect.js';
-import jobsRouter from './routes/jobs.js';
-import authRouter from './routes/auth.js';
+import { jobsRouter } from './routes/jobs.js';
+import { authRouter } from './routes/auth.js';
 
 const app = express();
 
@@ -15,9 +15,8 @@ app.use(express.json()); // parse json bodies in requests
 // extra packages
 
 // routes
-app.get('/', (req, res) => {
-  res.send('jobs api');
-});
+app.get('/api/v1/auth', authRouter);
+app.get('/api/v1/jobs', jobsRouter);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
