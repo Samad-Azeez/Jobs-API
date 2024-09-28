@@ -36,12 +36,13 @@ userSchema.pre('save', async function () {
   this.password = await bcrybt.hash(this.password, salt);
 });
 
+// Method to generate a JSON Web Token (JWT) for ever user schema instance
 userSchema.methods.createJWT = function () {
   return jsonwebtoken.sign(
     { userId: this._id, name: this.name },
-    'jwt secret',
+    process.env.JWT_SECRET, // secret key
     {
-      expiresIn: '30d',
+      expiresIn: process.env.JWT_LIFETIME, // token lifetime
     }
   );
 };
