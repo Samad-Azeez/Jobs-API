@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import bcrybt from 'bcryptjs';
+import jsonwebtoken from 'jsonwebtoken';
 
 const userSchema = new mongoose.Schema(
   {
@@ -27,5 +29,21 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// mongoose middleware to hash the user's password with bcrypt before saving it to the database
+userSchema.pre('save', async function () {
+  const salt = await bcrybt.genSalt(10);
+  this.password = await bcrybt.hash(this.password, salt);
+});
+
+userSchema.methods.createJWT = function () {
+  return jsonwebtoken.sign(
+    { userId: this._id, name: this.name },
+    'jwt secret',
+    {
+      expiresIn: '30d',
+    }
+  );
+};
 
 export const User = mongoose.model('User', userSchema);
