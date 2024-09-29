@@ -47,4 +47,10 @@ userSchema.methods.createJWT = function () {
   );
 };
 
+// Method to compare the user's password with the hashed password in the database
+userSchema.methods.comparePassword = async function (password) {
+  const isMatch = await bcrybt.compare(password, this.password);
+  return isMatch;
+};
+
 export const User = mongoose.model('User', userSchema);
