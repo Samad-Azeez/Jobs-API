@@ -24,10 +24,8 @@ const JobSchema = new mongoose.Schema(
       required: [true, 'please provide a user id'],
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 // export the model
-export const jobModel = mongoose.model('Job', JobSchema);
+export const JobModel = mongoose.model('Job', JobSchema);
