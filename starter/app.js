@@ -6,6 +6,7 @@ import { errorHandlerMiddleware } from './middleware/error-handler.js';
 import { connectDB } from './db/connect.js';
 import { jobsRouter } from './routes/jobs.js';
 import { authRouter } from './routes/auth.js';
+import { auth } from './middleware/authentication.js';
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(express.json()); // parse json bodies in requests
 
 // routes
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/jobs', auth, jobsRouter); // protect all job routes with the auth middleware
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);
