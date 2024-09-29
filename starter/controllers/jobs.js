@@ -90,7 +90,7 @@ const deleteJob = async (req, res) => {
     throw new NotFoundError(`No job with id : ${jobId}`);
   }
 
-  res.status(StatusCodes.OK).json({ job });
+  res.status(StatusCodes.OK).json({ msg: 'Job deleted successfully' });
 };
 
 export { getAllJobs, getJob, createJob, updateJob, deleteJob };
