@@ -1,4 +1,4 @@
-import { CustomAPIError } from '../errors/custom-api.js';
+// import { CustomAPIError } from '../errors/custom-api.js';
 import { StatusCodes } from 'http-status-codes';
 
 export const errorHandlerMiddleware = (err, req, res, next) => {
@@ -13,9 +13,9 @@ export const errorHandlerMiddleware = (err, req, res, next) => {
   };
 
   // handle custom API error
-  if (err instanceof CustomAPIError) {
-    return res.status(err.statusCode).json({ msg: err.message });
-  }
+  // if (err instanceof CustomAPIError) {
+  //   return res.status(err.statusCode).json({ msg: err.message });
+  // }
 
   // handle mongoose duplicate key error
   if (err.code && err.code === 11000) {
