@@ -5,9 +5,9 @@ import { BadRequestError, NotFoundError } from '../errors/index.js';
 // get all jobs
 const getAllJobs = async (req, res) => {
   // find all jobs created by the user and sort them by creation date
-  const job = await JobModel.find({ createdBy: req.user.userId }).sort(
-    'createdAt'
-  );
+  const job = await JobModel.find({ createdBy: req.user.userId }).sort({
+    createdAt: 1,
+  });
 
   const nbHits = job.length; // number of jobs found
   res.status(StatusCodes.OK).json({ job, nbHits });
